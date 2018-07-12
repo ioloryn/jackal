@@ -12,10 +12,10 @@ logger:
 storage:
   type: mysql
   mysql:
-    host: 127.0.0.1:3306
-    user: jackal
-    password: password
-    database: jackal
+    host: os.Getenv("MYSQL_HOST"):os.Getenv("MYSQL_PORT")
+    user: os.Getenv("MYSQL_USER")
+    password: os.Getenv("MYSQL_PASS")
+    database: os.Getenv("MYSQL_DB")
     pool_size: 16
 
 hosts:
