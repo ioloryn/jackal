@@ -12,7 +12,7 @@ logger:
 storage:
   type: mysql
   mysql:
-    host: ${MYSQL_HOST}:${MYSQL_PORT}
+    host: ${MYSQL_HOST}:3306
     user: ${MYSQL_USER}
     password: ${MYSQL_PASS}
     database: ${MYSQL_DB}
