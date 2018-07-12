@@ -16,11 +16,6 @@ RUN cd $GOPATH/src/github.com/ioloryn/jackal && dep ensure
 RUN export CGO_ENABLED=0
 RUN export GOOS=linux
 RUN export GOARCH=amd64
-ENV MYSQL_HOST=127.0.0.1
-ENV MYSQL_PORT=3306
-ENV MYSQL_USER=jackal
-ENV MYSQL_PASS=somepass
-ENV MYSQL_DB=127.0.0.1
 RUN go build github.com/ioloryn/jackal
 
 FROM debian:stretch-slim
