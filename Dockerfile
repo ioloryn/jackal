@@ -16,6 +16,11 @@ RUN cd $GOPATH/src/github.com/ortuman/jackal && dep ensure
 RUN export CGO_ENABLED=0
 RUN export GOOS=linux
 RUN export GOARCH=amd64
+RUN export MYSQL_HOST=127.0.0.1
+RUN export MYSQL_PORT=3306
+RUN export MYSQL_USER=jackal
+RUN export MYSQL_PASS=somepass
+RUN export MYSQL_DB=127.0.0.1
 RUN go build github.com/ortuman/jackal
 
 FROM debian:stretch-slim
