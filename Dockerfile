@@ -25,6 +25,6 @@ RUN go build github.com/ortuman/jackal
 
 FROM debian:stretch-slim
 COPY --from=buildimage /jackal/jackal /
-ADD docker.jackal.yml /etc/jackal/jackal.yml
+ADD example.jackal.yml /etc/jackal/jackal.yml
 EXPOSE 5222
 CMD ["./jackal"]
