@@ -12,18 +12,10 @@ logger:
 storage:
   type: mysql
   mysql:
-    host: 
-      environment:
-        MYSQL_HOST=127.0.0.1:3306
-    user:
-      environment:
-        MYSQL_USER=jackal
-    password:
-      environment:
-        MYSQL_PASS=somepass
-    database: 
-      environment:
-        MYSQL_DB=jackal
+    host: 127.0.0.1:3306
+    user: jackal
+    password: somepass
+    database: jackal
     pool_size: 16
 
 hosts:
