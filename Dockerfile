@@ -6,12 +6,6 @@ LABEL org.label-schema.name="jackal"
 LABEL org.label-schema.vendor="Miguel Ángel Ortuño"
 LABEL maintainer="Miguel Ángel Ortuño <ortuman@protonmail.com>"
 
-ENV MYSQL_HOST="127.0.0.1"
-ENV MYSQL_PORT="3306"
-ENV MYSQL_DB="jackal"
-ENV MYSQL_USER="jackal"
-ENV MYSQL_PASS="somepass"
-
 WORKDIR /jackal
 
 RUN curl -L -s https://github.com/golang/dep/releases/download/v0.4.1/dep-linux-amd64 -o $GOPATH/bin/dep
@@ -25,6 +19,11 @@ RUN export GOARCH=amd64
 RUN go build github.com/ioloryn/jackal
 
 FROM debian:stretch-slim
+ENV MYSQL_HOST="127.0.0.1"
+ENV MYSQL_PORT="3306"
+ENV MYSQL_DB="jackal"
+ENV MYSQL_USER="jackal"
+ENV MYSQL_PASS="somepass"
 COPY --from=buildimage /jackal/jackal /
 ADD example.jackal.yml /etc/jackal/jackal.yml
 RUN ./config-mod.sh
