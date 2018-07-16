@@ -19,14 +19,16 @@ RUN export GOARCH=amd64
 RUN go build github.com/ioloryn/jackal
 
 FROM debian:stretch-slim
-RUN export MYSQL_HOST="127.0.0.1"
-RUN export MYSQL_PORT="3306"
-RUN export MYSQL_DB="jackal"
-RUN export MYSQL_USER="jackal"
-RUN export MYSQL_PASS="somepass"
+ENV MYSQL_HOST="127.0.0.1"
+ENV MYSQL_PORT="3306"
+ENV MYSQL_DB="jackal"
+ENV MYSQL_USER="jackal"
+ENV MYSQL_PASS="somepass"
 COPY --from=buildimage /jackal/jackal /
 ADD example.jackal.yml /etc/jackal/jackal.yml
 ADD config-mod.sh /tmp/config-mod.sh
 RUN chmod +x /tmp/config-mod.sh && /tmp/config-mod.sh
+RUN cat /etc/jackal/jackal.yml
+RUN printenv
 EXPOSE 5222
 CMD ["./jackal"]
