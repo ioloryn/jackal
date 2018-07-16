@@ -26,6 +26,7 @@ ENV MYSQL_USER="jackal"
 ENV MYSQL_PASS="somepass"
 COPY --from=buildimage /jackal/jackal /
 ADD example.jackal.yml /etc/jackal/jackal.yml
-RUN ./config-mod.sh
+ADD config-mod.sh /tmp/config-mod.sh
+RUN chmod +x /tmp/config-mod.sh && /tmp/config-mod.sh
 EXPOSE 5222
 CMD ["./jackal"]
