@@ -20,10 +20,10 @@ RUN go build github.com/ioloryn/jackal
 
 FROM debian:stretch-slim
 ENV MYSQL_HOST="127.0.0.1"
-ENV MYSQL_PORT="3306"
+ENV MYSQL_PORT="16256"
 ENV MYSQL_DB="jackal"
 ENV MYSQL_USER="jackal"
-ENV MYSQL_PASS="somepass"
+ENV MYSQL_PASS="somepassuser"
 COPY --from=buildimage /jackal/jackal /
 ADD example.jackal.yml /etc/jackal/jackal.yml
 ADD config-mod.sh /tmp/config-mod.sh
